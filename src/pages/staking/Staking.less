@@ -1,0 +1,140 @@
+@import "../../antd.customize.less";
+
+.diff-colored {
+  background-color: #232536;
+}
+
+.table-opened {
+  width: 75%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0 2em 2em;
+  .diff-colored();
+}
+
+.table-colored {
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1em;
+  .diff-colored();
+  :not(:first-child) {
+    margin-left: 2.5em;
+  }
+}
+
+.text-table {
+  font-weight: bold;
+  .diff-colored();
+}
+
+.btn-table {
+  background-color: #ffc94d;
+  border-radius: 10px;
+  margin-top: -1em;
+  :hover {
+    background-color: #ffc94d;
+  }
+  :active {
+    background-color: #ffc94d;
+  }
+}
+
+.btn-table-text {
+  color: black;
+  font-weight: bold;
+  background-color: #ffc94d;
+  :hover {
+    background-color: #ffc94d;
+  }
+  :active {
+    background-color: #ffc94d;
+  }
+}
+
+@import "../../antd.customize.less";
+
+.stable-margin {
+  margin-top: 30px !important;
+}
+
+.stability-card {
+  display: flex;
+  justify-content: center;
+}
+
+.stability-space {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.staking-hr {
+  margin: 16px -15px;
+  border-color: #8F8F8F;
+}
+
+.font-middle {
+  justify-content: center;
+}
+
+.comp-between {
+  margin-right: 5px;
+}
+
+.myButton {
+  border-radius: 10px !important;
+  padding: 5px 25px !important;
+  background-color: #0ba9b0 !important;
+  cursor: pointer !important;
+  border: 0 !important;
+  color: #ffffff !important;
+  font-size: 14 !important;
+}
+
+.ant-card-row {
+  box-sizing: border-box;
+  margin: 5px 0px;
+  min-width: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+
+  .card-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0px;
+    min-width: 0px;
+    font-size: 14px;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .small {
+    font-size: 11px;
+  }
+}
+
+
+
+.ant-modal-body {
+  background: rgba(34, 39, 47, 1) !important;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+}

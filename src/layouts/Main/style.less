@@ -1,0 +1,56 @@
+@import "../../responsive.less";
+
+.main-layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-layout-header {
+  width: 100%;
+  padding: 0 !important;
+  min-height: 0;
+  margin-bottom: 1rem;
+}
+
+.main-layout-footer {
+  width: 100%;
+  padding: 0 !important;
+  min-height: 0;
+  margin-bottom: 1rem;
+  background: none !important;
+  display: flex;
+  justify-content: center;
+  box-sizing: content-box;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to left top, #05FAFF, #7A84FF);
+  border-image-slice: 1;
+  border-right: 1px;
+  border-left: 1px;
+  border-bottom: 1px;
+}
+
+.main-layout-content {
+  min-height: calc(100vh - 140px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  overflow-x: auto;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.child-container {
+  min-width: 1024px !important;
+  width: @normal-width;
+  padding: 0 @min-padding;
+  margin-bottom: 100px;
+}
+
+.ant-layout-header {
+  background: none !important;
+}

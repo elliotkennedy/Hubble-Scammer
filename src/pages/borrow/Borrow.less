@@ -1,0 +1,172 @@
+@import "../../antd.customize.less";
+
+
+.borrow-details-wrapper {
+  padding : 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.borrow-details-status {
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.borrow-details-each {
+  min-width : 170px;
+  max-width: 170px;
+  padding : 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-wrapper {
+  padding : 10px;
+}
+
+.borrowing-info-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.borrowing-info-item {
+  color: "#FFFFFF";
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.approve-btn {
+  border-radius: 5px;
+  background-color : orange;
+  padding: 5px;
+  border: none;
+  height: @normal-height;
+  color: black;
+  font-weight: bold;
+}
+
+.deposit-btn {
+  border-radius: 5px;
+  background-color: @popover-background;
+  padding: 5px;
+  border: none;
+  height: @normal-height;
+  font-weight: bold;
+}
+
+.first-borrow-box {
+  min-width: 430px;
+  width: 80%;
+}
+
+.second-borrow-box {
+  min-width: 428px;
+  width: 80%;
+}
+
+
+.between-borrow-box {
+  min-width: 50px;
+  width: 20%;
+}
+
+.ant-select-dropdown {
+  box-shadow: none !important;
+  border-radius: 10px !important;
+}
+
+.rc-virtual-list-holder {
+  border-radius: 10px;
+}
+
+.ant-tooltip-inner {
+  box-shadow: none !important;
+  border-radius: 15px !important;
+  padding: 12px !important;
+}
+
+.anticon-question-circle {
+  color: #C4C4C4 !important;
+}
+
+.ant-checkbox-inner {
+  border-color: none !important;
+}
+
+.cancel-button {
+  width: 100%;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.cancel-button:hover {
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.cancel-button:active {
+  color: white !important;
+  box-shadow: none !important;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + span {
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  width: 20px;
+  height: 20px;
+  margin: -1px 0px 0 0;
+  vertical-align: middle;
+  border-radius: 5px;
+  background: none left top no-repeat;
+  border: 3px solid #05FAFF;
+  cursor: pointer;
+}
+input[type="checkbox"]:checked + span {
+  background: #05FAFF -19px top no-repeat;
+}
+
+input[type="checkbox"] + span {
+  margin-right: 4px;
+}
+
+.ant-checkbox-checked {
+  border: none !important
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  border: none !important;
+}
+
+.ant-checkbox-checked::after {
+  border: none !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  border: 2px solid #252A32 !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border: 1px solid #05FAFF !important;
+}
+
+
+.ant-modal-body {
+  background: rgba(34, 39, 47, 1) !important;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+}
+
+.ant-tooltip-arrow-content {
+  width: 10px !important;
+  height: 10px !important;
+}

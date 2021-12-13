@@ -1,0 +1,110 @@
+{
+  "name": "hubble-webapp",
+  "version": "0.0.1-SNAPSHOT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hubble-markets/hubble-webapp"
+  },
+  "homepage": ".",
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
+    "eslint": "eslint --ext .js,jsx,ts,tsx src",
+    "eslint:fix": "eslint --fix --ext .js,jsx,ts,tsx src",
+    "stylelint": "stylelint \"src/**/*.{scss,less}\"",
+    "program:build": "cd program && cargo build-bpf",
+    "program:test": "cd program && cargo test-bpf",
+    "localnet:up": "solana-test-validator --bpf-program BpfProgram1111111111111111111111111111111111 program/target/deploy/bpf_program_template.so --reset",
+    "localnet:logs": "solana logs -u localhost",
+    "predeploy": "git pull --ff-only && yarn && yarn build",
+    "deploy": "gh-pages -d build",
+    "deploy:ar": "arweave deploy-dir build --key-file "
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.5.0",
+    "@craco/craco": "^6.2.0",
+    "@fontsource/sora": "^4.5.0",
+    "@project-serum/anchor": "^0.13.2",
+    "@project-serum/serum": "^0.13.34",
+    "@solana/spl-token": "^0.1.8",
+    "@solana/spl-token-registry": "^0.2.246",
+    "@solana/spl-token-swap": "^0.1.0",
+    "@solana/wallet-adapter-ant-design": "^0.2.1",
+    "@solana/wallet-adapter-base": "^0.4.1",
+    "@solana/wallet-adapter-react": "^0.7.1",
+    "@solana/wallet-adapter-wallets": "^0.6.1",
+    "@solana/web3.js": "^1.24.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@types/react-router-dom": "^5.1.6",
+    "antd": "^4.16.13",
+    "bn.js": "^5.1.3",
+    "bs58": "^4.0.1",
+    "buffer-layout": "^1.2.0",
+    "connected-react-router": "^6.9.1",
+    "craco-less": "^1.17.0",
+    "eventemitter3": "^4.0.7",
+    "history": "^4.10.1",
+    "html-react-parser": "^1.3.0",
+    "jazzicon": "^1.5.0",
+    "js-sha256": "^0.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
+    "react-helmet": "^6.1.0",
+    "react-number-format": "^4.7.3",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-saga": "^1.1.3",
+    "reselect": "^4.0.0",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^4.11.6",
+    "@types/bs58": "^4.0.1",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.62",
+    "@types/react": "^16.9.50",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "arweave-deploy": "^1.9.1",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb-typescript": "14.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "gh-pages": "^3.1.0",
+    "prettier": "^2.1.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@project-serum/sol-wallet-adapter)"
+    ]
+  }
+}

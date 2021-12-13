@@ -1,0 +1,10 @@
+const actions = {
+  SET_STATE: 'solana/SET_STATE',
+  GET_KNOWN_MINTS: 'solana/GET_KNOWN_MINTS',
+  GET_MINT_ACCOUNTS: 'solana/GET_MINT_ACCOUNTS',
+  GET_TOKEN_ACCOUNTS: 'solana/GET_TOKEN_ACCOUNTS',
+  GET_NATIVE_ACCOUNT: 'solana/GET_NATIVE_ACCOUNT',
+  REQUEST_AIRDROP: 'solana/REQUEST_AIRDROP',
+}
+
+export default actions

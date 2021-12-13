@@ -1,0 +1,2978 @@
+{
+  "version": "0.0.0",
+  "name": "borrowing",
+  "instructions": [
+    {
+      "name": "initializeBorrowingMarket",
+      "accounts": [
+        {
+          "name": "initialMarketOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "redemptionsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultSol",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultSrm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultEth",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultBtc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultRay",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultFtt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hbbMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "srmMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ethMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "btcMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rayMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "fttMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "approveTrove",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinAta",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "depositCollateral",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralFrom",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralTo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountInLamports",
+          "type": "u64"
+        },
+        {
+          "name": "collateral",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "borrowStablecoin",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinBorrowingAssociatedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "pythSolPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythEthPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythBtcPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSrmPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythRayPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythFttPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "repayLoan",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinBorrowingAssociatedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "burningVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdrawCollateral",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralFrom",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralFromAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "collateralTo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSolPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythEthPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythBtcPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSrmPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythRayPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythFttPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "collateral",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "stabilityInitialize",
+      "accounts": [
+        {
+          "name": "initialMarketOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stabilityVaults",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "epochToScaleToSum",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultSol",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultSrm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultEth",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultBtc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultRay",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultFtt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stabilityApprove",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stabilityProviderState",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stabilityProvide",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "stabilityProviderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochToScaleToSum",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "stabilityWithdraw",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityProviderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochToScaleToSum",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "tryLiquidate",
+      "accounts": [
+        {
+          "name": "liquidator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochToScaleToSum",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinStabilityPoolVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSolPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythEthPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythBtcPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSrmPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythRayPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythFttPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "harvestLiquidationGains",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stabilityProviderState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stabilityPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "epochToScaleToSum",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultSol",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultSrm",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultEth",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultBtc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultRay",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultFtt",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hbbAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "srmAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ethAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "btcAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rayAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "fttAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "hbbMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hbbMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clearLiquidationGains",
+      "accounts": [
+        {
+          "name": "clearingAgent",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "collateralVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "liquidationRewardsVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clearingAgentAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "token",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "addRedemptionOrder",
+      "accounts": [
+        {
+          "name": "redeemer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "redeemerMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "redeemerStablecoinAssociatedAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "redemptionsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSolPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythEthPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythBtcPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythSrmPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythRayPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pythFttPriceInfo",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "stablecoinAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "fillRedemptionOrder",
+      "accounts": [
+        {
+          "name": "filler",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "fillerMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "redemptionsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "orderId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "clearRedemptionOrder",
+      "accounts": [
+        {
+          "name": "clearer",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "clearerMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "redeemerMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "redemptionsQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "burningVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "orderId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "stakingInitialize",
+      "accounts": [
+        {
+          "name": "initialMarketOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stakingVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stakingApprove",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "userStakingState",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userHbbStakingAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStablecoinRewardsAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userSolRewardsAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "stakingStakeHbb",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userHbbStakingAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "stakingHarvestReward",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStablecoinRewardsAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "unstakeHbb",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingVaults",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakingPoolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStakingState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userHbbStakingAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userStablecoinRewardsAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakingVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "borrowingFeesVaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "airdropHbb",
+      "accounts": [
+        {
+          "name": "initialMarketOwner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userHbbAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hbbMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "hbbMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "airdropUsdh",
+      "accounts": [
+        {
+          "name": "initialMarketOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "borrowingMarketState",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stablecoinMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BorrowingMarketState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "initialMarketOwner",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenProgramId",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinMintAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinMintSeed",
+            "type": "u8"
+          },
+          {
+            "name": "hbbMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "hbbMintAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "hbbMintSeed",
+            "type": "u8"
+          },
+          {
+            "name": "numUsers",
+            "type": "u64"
+          },
+          {
+            "name": "numActiveUsers",
+            "type": "u64"
+          },
+          {
+            "name": "stablecoinBorrowed",
+            "type": "u64"
+          },
+          {
+            "name": "depositedCollateral",
+            "type": {
+              "defined": "CollateralAmounts"
+            }
+          },
+          {
+            "name": "baseRateBps",
+            "type": "u16"
+          },
+          {
+            "name": "redistributedSol",
+            "type": "u64"
+          },
+          {
+            "name": "redistributedStablecoin",
+            "type": "u64"
+          },
+          {
+            "name": "totalStake",
+            "type": "u64"
+          },
+          {
+            "name": "collateralRewardPerToken",
+            "type": {
+              "defined": "TokenMap"
+            }
+          },
+          {
+            "name": "stablecoinRewardPerToken",
+            "type": "u128"
+          },
+          {
+            "name": "totalStakeLastLiqSnapshot",
+            "type": "u64"
+          },
+          {
+            "name": "borrowedStablecoinLastLiqSnapshot",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BorrowingVaults",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "borrowingMarketState",
+            "type": "publicKey"
+          },
+          {
+            "name": "burningVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "burningVaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "burningVaultSeed",
+            "type": "u8"
+          },
+          {
+            "name": "borrowingFeesVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "borrowingFeesVaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "borrowingFeesVaultSeed",
+            "type": "u8"
+          },
+          {
+            "name": "collateralVaultSol",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultSrm",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultEth",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultBtc",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultRay",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultFtt",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultsAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "collateralVaultsSeed",
+            "type": "u8"
+          },
+          {
+            "name": "srmMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "ethMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "btcMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "rayMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "fttMint",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityPoolState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "borrowingMarketState",
+            "type": "publicKey"
+          },
+          {
+            "name": "epochToScaleToSum",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationsQueue",
+            "type": "publicKey"
+          },
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "numUsers",
+            "type": "u64"
+          },
+          {
+            "name": "totalUsersProvidingStability",
+            "type": "u64"
+          },
+          {
+            "name": "stablecoinDeposited",
+            "type": "u64"
+          },
+          {
+            "name": "hbbEmissionsStartTs",
+            "type": "u64"
+          },
+          {
+            "name": "cumulativeGainsTotal",
+            "type": {
+              "defined": "StabilityTokenMap"
+            }
+          },
+          {
+            "name": "pendingCollateralGains",
+            "type": {
+              "defined": "StabilityTokenMap"
+            }
+          },
+          {
+            "name": "currentEpoch",
+            "type": "u64"
+          },
+          {
+            "name": "currentScale",
+            "type": "u64"
+          },
+          {
+            "name": "p",
+            "type": "u128"
+          },
+          {
+            "name": "lastStablecoinLossErrorOffset",
+            "type": "u64"
+          },
+          {
+            "name": "lastCollLossErrorOffset",
+            "type": {
+              "defined": "StabilityCollateralAmounts"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityVaults",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stabilityPoolState",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinStabilityPoolVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinStabilityPoolVaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinStabilityPoolVaultSeed",
+            "type": "u8"
+          },
+          {
+            "name": "liquidationRewardsVaultSol",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultSrm",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultEth",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultBtc",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultRay",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultFtt",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidationRewardsVaultSeed",
+            "type": "u8"
+          },
+          {
+            "name": "srmMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "ethMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "btcMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "rayMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "fttMint",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserMetadata",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "userId",
+            "type": "u64"
+          },
+          {
+            "name": "metadataPk",
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "borrowingMarketState",
+            "type": "publicKey"
+          },
+          {
+            "name": "stablecoinAta",
+            "type": "publicKey"
+          },
+          {
+            "name": "depositedCollateral",
+            "type": {
+              "defined": "CollateralAmounts"
+            }
+          },
+          {
+            "name": "borrowedStablecoin",
+            "type": "u64"
+          },
+          {
+            "name": "userStake",
+            "type": "u64"
+          },
+          {
+            "name": "userCollateralRewardPerToken",
+            "type": {
+              "defined": "TokenMap"
+            }
+          },
+          {
+            "name": "userStablecoinRewardPerToken",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StakingPoolState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "borrowingMarketState",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalDistributedRewards",
+            "type": "u128"
+          },
+          {
+            "name": "rewardsNotYetClaimed",
+            "type": "u128"
+          },
+          {
+            "name": "totalStake",
+            "type": "u128"
+          },
+          {
+            "name": "rewardPerToken",
+            "type": "u128"
+          },
+          {
+            "name": "prevRewardLoss",
+            "type": "u128"
+          },
+          {
+            "name": "stakingVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakingVaultAuthority",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakingVaultSeed",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserStakingState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stakingPoolState",
+            "type": "publicKey"
+          },
+          {
+            "name": "borrowingFeesVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "stakingVault",
+            "type": "publicKey"
+          },
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "userHbbStakingAta",
+            "type": "publicKey"
+          },
+          {
+            "name": "userSolRewardsAta",
+            "type": "publicKey"
+          },
+          {
+            "name": "userStablecoinRewardsAta",
+            "type": "publicKey"
+          },
+          {
+            "name": "userStake",
+            "type": "u128"
+          },
+          {
+            "name": "rewardsTally",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityProviderState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "stabilityPoolState",
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "userId",
+            "type": "u64"
+          },
+          {
+            "name": "depositedStablecoin",
+            "type": "u64"
+          },
+          {
+            "name": "userDepositSnapshot",
+            "type": {
+              "defined": "DepositSnapshot"
+            }
+          },
+          {
+            "name": "cumulativeGainsPerUser",
+            "type": {
+              "defined": "StabilityTokenMap"
+            }
+          },
+          {
+            "name": "pendingGainsPerUser",
+            "type": {
+              "defined": "StabilityCollateralAmounts"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "EpochToScaleToSumAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "data",
+            "type": {
+              "array": [
+                "u128",
+                1000
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionsQueue",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "orders",
+            "type": {
+              "array": [
+                {
+                  "defined": "RedemptionOrder"
+                },
+                15
+              ]
+            }
+          },
+          {
+            "name": "nextIndex",
+            "type": "u64"
+          },
+          {
+            "name": "len",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidationsQueue",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "len",
+            "type": "u64"
+          },
+          {
+            "name": "events",
+            "type": {
+              "array": [
+                {
+                  "defined": "LiquidationEvent"
+                },
+                300
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "DepositSnapshot",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sum",
+            "type": {
+              "defined": "StabilityTokenMap"
+            }
+          },
+          {
+            "name": "product",
+            "type": "u128"
+          },
+          {
+            "name": "scale",
+            "type": "u64"
+          },
+          {
+            "name": "epoch",
+            "type": "u64"
+          },
+          {
+            "name": "enabled",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CandidateRedemptionUser",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "userId",
+            "type": "u64"
+          },
+          {
+            "name": "userMetadata",
+            "type": "publicKey"
+          },
+          {
+            "name": "debt",
+            "type": "u64"
+          },
+          {
+            "name": "collateralRatio",
+            "type": "u64"
+          },
+          {
+            "name": "fillerMetadata",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionOrder",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "lastReset",
+            "type": "u64"
+          },
+          {
+            "name": "redeemerUserMetadata",
+            "type": "publicKey"
+          },
+          {
+            "name": "redeemer",
+            "type": "publicKey"
+          },
+          {
+            "name": "requestedAmount",
+            "type": "u64"
+          },
+          {
+            "name": "remainingAmount",
+            "type": "u64"
+          },
+          {
+            "name": "redemptionPrices",
+            "type": {
+              "defined": "TokenPrices"
+            }
+          },
+          {
+            "name": "candidateUsers",
+            "type": {
+              "array": [
+                {
+                  "defined": "CandidateRedemptionUser"
+                },
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidationEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "userPositions",
+            "type": "publicKey"
+          },
+          {
+            "name": "positionIndex",
+            "type": "u64"
+          },
+          {
+            "name": "liquidator",
+            "type": "publicKey"
+          },
+          {
+            "name": "eventTs",
+            "type": "u64"
+          },
+          {
+            "name": "collateralGainToLiquidator",
+            "type": {
+              "defined": "CollateralAmounts"
+            }
+          },
+          {
+            "name": "collateralGainToClearer",
+            "type": {
+              "defined": "CollateralAmounts"
+            }
+          },
+          {
+            "name": "collateralGainToStabilityPool",
+            "type": {
+              "defined": "CollateralAmounts"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenMap",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sol",
+            "type": "u128"
+          },
+          {
+            "name": "eth",
+            "type": "u128"
+          },
+          {
+            "name": "btc",
+            "type": "u128"
+          },
+          {
+            "name": "srm",
+            "type": "u128"
+          },
+          {
+            "name": "ray",
+            "type": "u128"
+          },
+          {
+            "name": "ftt",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityTokenMap",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sol",
+            "type": "u128"
+          },
+          {
+            "name": "eth",
+            "type": "u128"
+          },
+          {
+            "name": "btc",
+            "type": "u128"
+          },
+          {
+            "name": "srm",
+            "type": "u128"
+          },
+          {
+            "name": "ray",
+            "type": "u128"
+          },
+          {
+            "name": "ftt",
+            "type": "u128"
+          },
+          {
+            "name": "hbb",
+            "type": "u128"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Price",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "value",
+            "type": "u64"
+          },
+          {
+            "name": "exp",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenPrices",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sol",
+            "type": {
+              "defined": "Price"
+            }
+          },
+          {
+            "name": "eth",
+            "type": {
+              "defined": "Price"
+            }
+          },
+          {
+            "name": "btc",
+            "type": {
+              "defined": "Price"
+            }
+          },
+          {
+            "name": "srm",
+            "type": {
+              "defined": "Price"
+            }
+          },
+          {
+            "name": "ray",
+            "type": {
+              "defined": "Price"
+            }
+          },
+          {
+            "name": "ftt",
+            "type": {
+              "defined": "Price"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollateralAmounts",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sol",
+            "type": "u64"
+          },
+          {
+            "name": "eth",
+            "type": "u64"
+          },
+          {
+            "name": "btc",
+            "type": "u64"
+          },
+          {
+            "name": "srm",
+            "type": "u64"
+          },
+          {
+            "name": "ray",
+            "type": "u64"
+          },
+          {
+            "name": "ftt",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityCollateralAmounts",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sol",
+            "type": "u64"
+          },
+          {
+            "name": "eth",
+            "type": "u64"
+          },
+          {
+            "name": "btc",
+            "type": "u64"
+          },
+          {
+            "name": "srm",
+            "type": "u64"
+          },
+          {
+            "name": "ray",
+            "type": "u64"
+          },
+          {
+            "name": "ftt",
+            "type": "u64"
+          },
+          {
+            "name": "hbb",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LoadingMode",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Init"
+          },
+          {
+            "name": "Mut"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidationDecision",
+      "type": {
+        "kind": "enum",
+        "variants": []
+      }
+    },
+    {
+      "name": "LiquidationDecision",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "RedistributeAll"
+          },
+          {
+            "name": "StabilityPoolAll"
+          },
+          {
+            "name": "StabilityPoolThenRedistribute"
+          },
+          {
+            "name": "DoNothing"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidationMode",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Normal"
+          },
+          {
+            "name": "Recovery"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "PendingCollection"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PDA",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "BorrowingFeesAccount",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "StablecoinMint",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "StabilityPool",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "BurningPotAccount",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "StakingPool",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "HbbMint",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "CollateralVault",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          },
+          {
+            "name": "LiquidationsVault",
+            "fields": [
+              {
+                "name": "owner",
+                "type": "publicKey"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionOrderStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "Open"
+          },
+          {
+            "name": "Filling"
+          },
+          {
+            "name": "Claiming"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RedemptionCandidateStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "Active"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Liquidated"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollateralToken",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "SOL"
+          },
+          {
+            "name": "ETH"
+          },
+          {
+            "name": "BTC"
+          },
+          {
+            "name": "SRM"
+          },
+          {
+            "name": "RAY"
+          },
+          {
+            "name": "FTT"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StabilityToken",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "SOL"
+          },
+          {
+            "name": "ETH"
+          },
+          {
+            "name": "BTC"
+          },
+          {
+            "name": "SRM"
+          },
+          {
+            "name": "RAY"
+          },
+          {
+            "name": "FTT"
+          },
+          {
+            "name": "HBB"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 300,
+      "name": "NotEnoughCollateral",
+      "msg": "Insufficient collateral to cover debt"
+    },
+    {
+      "code": 301,
+      "name": "CollateralNotEnabled",
+      "msg": "Collateral not yet enabled"
+    },
+    {
+      "code": 302,
+      "name": "CannotDepositZeroAmount",
+      "msg": "Cannot deposit zero collateral amount"
+    },
+    {
+      "code": 303,
+      "name": "CannotWithdrawZeroAmount",
+      "msg": "Cannot withdraw zero collateral amount"
+    },
+    {
+      "code": 304,
+      "name": "NothingToRepay",
+      "msg": "No outstanding debt"
+    },
+    {
+      "code": 305,
+      "name": "CannotGenerateSeed",
+      "msg": "Could not generate seed"
+    },
+    {
+      "code": 306,
+      "name": "NeedToClaimAllRewardsFirst",
+      "msg": "Need to claim all rewards first"
+    },
+    {
+      "code": 307,
+      "name": "NeedToHarvestAllRewardsFirst",
+      "msg": "Need to harvest all rewards first"
+    },
+    {
+      "code": 308,
+      "name": "StakingZero",
+      "msg": "Cannot stake or unstake 0 amount"
+    },
+    {
+      "code": 309,
+      "name": "NothingToUnstake",
+      "msg": "Nothing to unstake"
+    },
+    {
+      "code": 310,
+      "name": "UnstakingTooMuch",
+      "msg": "Unstaking too much"
+    },
+    {
+      "code": 311,
+      "name": "NoRewardToWithdraw",
+      "msg": "No reward to withdraw"
+    },
+    {
+      "code": 312,
+      "name": "CannotProvideZeroStability",
+      "msg": "Cannot provide zero stability"
+    },
+    {
+      "code": 313,
+      "name": "StabilityPoolIsEmpty",
+      "msg": "Stability Pool is empty"
+    },
+    {
+      "code": 314,
+      "name": "NotEnoughStabilityInTheStabilityPool",
+      "msg": "Stability pool cannot offset this much debt"
+    },
+    {
+      "code": 315,
+      "name": "MismatchedNextPdaRewardAddress",
+      "msg": "Mismatching next PDA reward address"
+    },
+    {
+      "code": 316,
+      "name": "MismatchedNextPdaRewardSeed",
+      "msg": "Mismatching next PDA reward seed"
+    },
+    {
+      "code": 317,
+      "name": "MismatchedNextPdaIndex",
+      "msg": "Wrong next reward pda index"
+    },
+    {
+      "code": 318,
+      "name": "NextRewardNotReadyYet",
+      "msg": "Next reward not ready yet"
+    },
+    {
+      "code": 319,
+      "name": "NothingStaked",
+      "msg": "Nothing staked, cannot collect any rewards"
+    },
+    {
+      "code": 320,
+      "name": "NextRewardMismatchForUser",
+      "msg": "Reward candidate mismatch from user's next pending reward"
+    },
+    {
+      "code": 321,
+      "name": "UserWellCollateralized",
+      "msg": "User is well collateralized, cannot liquidate"
+    },
+    {
+      "code": 322,
+      "name": "LastUser",
+      "msg": "Cannot liquidate the last user"
+    },
+    {
+      "code": 323,
+      "name": "IntegerOverflow",
+      "msg": "Integer overflow"
+    },
+    {
+      "code": 324,
+      "name": "ConversionFailure",
+      "msg": "Integer overflow"
+    },
+    {
+      "code": 325,
+      "name": "CannotHarvestUntilLiquidationGainsCleared",
+      "msg": "Cannot harvest until liquidation gains are cleared"
+    },
+    {
+      "code": 326,
+      "name": "RedemptionsQueueIsFull",
+      "msg": "Redemptions queue is full, cannot add one more order"
+    },
+    {
+      "code": 327,
+      "name": "RedemptionsQueueIsEmpty",
+      "msg": "Redemptions queue is empty, nothing to process"
+    },
+    {
+      "code": 328,
+      "name": "RedemptionsAmountTooSmall",
+      "msg": "Redemptions amount too small"
+    },
+    {
+      "code": 329,
+      "name": "CannotRedeemMoreThanMinted",
+      "msg": "Redemptions amount too much"
+    },
+    {
+      "code": 330,
+      "name": "NeedToProcessFirstOrderBeforeOthers",
+      "msg": "The program needs to finish processing the first outstanding order before moving on to others"
+    },
+    {
+      "code": 331,
+      "name": "RedemptionClearingOrderIsIncorrect",
+      "msg": "The bot submitted the clearing users in the wrong order"
+    },
+    {
+      "code": 332,
+      "name": "CannotFillRedemptionOrderWhileInClearingMode",
+      "msg": "Current redemption order is in clearing mode, cannot fill it until it's fully cleared"
+    },
+    {
+      "code": 333,
+      "name": "CannotClearRedemptionOrderWhileInFillingMode",
+      "msg": "Current redemption order is in filling mode, cannot clear it until it's filled"
+    },
+    {
+      "code": 334,
+      "name": "InvalidRedemptionOrder",
+      "msg": "Redemption order is inactive"
+    },
+    {
+      "code": 335,
+      "name": "OrderDoesNotHaveCandidates",
+      "msg": "Redemption order is empty of candidates"
+    },
+    {
+      "code": 336,
+      "name": "WrongRedemptionUser",
+      "msg": "Redemption user is not among the candidates"
+    },
+    {
+      "code": 337,
+      "name": "RedemptionFillerNotFound",
+      "msg": "Redemption user is not among the candidates"
+    },
+    {
+      "code": 338,
+      "name": "DuplicateAccountInFillOrder",
+      "msg": "Duplicate Account in Fill Order"
+    },
+    {
+      "code": 339,
+      "name": "RedemptionUserNotFound",
+      "msg": "Redemption user is not among the candidates"
+    },
+    {
+      "code": 340,
+      "name": "MathOverflow",
+      "msg": "Mathematical operation with overflow"
+    },
+    {
+      "code": 341,
+      "name": "PriceNotValid",
+      "msg": "Price is not valid"
+    },
+    {
+      "code": 342,
+      "name": "LiquidationsQueueFull",
+      "msg": "Liquidation queue is full"
+    },
+    {
+      "code": 343,
+      "name": "CannotDeserializeSumMap",
+      "msg": "Liquidation queue is full"
+    },
+    {
+      "code": 344,
+      "name": "InvalidMint",
+      "msg": "Token mint is not correct"
+    },
+    {
+      "code": 345,
+      "name": "InvalidVault",
+      "msg": "Token vault is not correct"
+    }
+  ],
+  "metadata": {
+    "address": "8v1DhJaewvhbhDmptNrkYig7YFcExsRKteR3cYjLw2iy"
+  }
+}

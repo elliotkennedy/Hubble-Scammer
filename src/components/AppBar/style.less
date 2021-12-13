@@ -1,0 +1,81 @@
+@import "src/antd.customize.less";
+@import "src/responsive.less";
+
+.app-bar {
+  border-bottom: 1px solid #4A4E65;
+  display: flex;
+  justify-content: center;
+}
+
+.app-min-bar {
+  min-width: @min-width;
+  width: @normal-width;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 @min-padding;
+  flex-direction: row;
+  align-content: stretch;
+  align-items: center;
+}
+
+.app-title {
+  font-style: normal;
+  //letter-spacing: 0px;
+  h2 {
+    margin-left: 20px !important;
+    color: aliceblue !important;
+    font-weight: 900 !important;
+    font-size: 20px;
+    margin: 0;
+    line-height: 32px; // half top bar
+  }
+}
+
+.app-bar-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: flex-start;
+  width: 100px;
+}
+
+.app-bar-center {
+  display: flex;
+  justify-content: center;
+  min-width: @menu-center-min-width;
+  width: 100%;
+}
+
+.app-bar-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100px;
+}
+
+.ant-menu {
+  background: none !important;
+}
+
+.walletbutton-style {
+  margin-left: 10px !important;
+  background: none !important;
+  font-size: 14px !important;
+  background-image: linear-gradient(#242637, #242637),linear-gradient(to right, #05E1FF, #7A84FF) !important;
+  border-radius: 20px !important;
+  border: 1px transparent !important;
+  background-origin: border-box !important;
+  background-clip: content-box, border-box !important;
+  padding: 1px 1px !important;
+  width: 140px !important;
+}
+
+.ant-modal-content {
+//  background-color: #232637 !important;
+  background-color: #242637 !important;
+}
+
+.menuback {
+  background: none !important;
+}
